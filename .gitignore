@@ -1,0 +1,6 @@
+# Ignore Cordova Build Directories
+platforms/
+plugins/
+
+# Ignore node
+node_modules/
