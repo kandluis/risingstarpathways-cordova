@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         options: {
           command: 'platform',
           action: 'add',
-          platforms: ['ios', 'android']
+          platforms: ['ios', 'android', 'browser']
         }
       },
       add_plugins: {
@@ -68,12 +68,6 @@ module.exports = function(grunt) {
           command: 'plugin',
           action: 'add',
           plugins: [
-            'console',
-            'device',
-            'geolocation',
-            'network-information',
-            'splashscreen',
-            'https://github.com/phonegap-build/PushPlugin.git'
           ]
         }
       },
@@ -87,6 +81,18 @@ module.exports = function(grunt) {
         options: {
           command: 'build',
           platforms: ['android']
+        }
+      },
+      build_browser: {
+        options: {
+          command: 'build',
+          platforms: ['browser']
+        }
+      },
+      prepare_browser: {
+        options: {
+          command: 'prepare',
+          platforms: ['browser']
         }
       },
       prepare_ios: {
@@ -144,12 +150,14 @@ module.exports = function(grunt) {
   grunt.registerTask('update', 'Update platforms.', [
     'cordovacli:prepare_ios',
     'cordovacli:prepare_android',
+    'cordovacli:prepare_browser',
     'copy'
   ]);
 
   grunt.registerTask('build', 'Build Platforms.', [
     'cordovacli:build_ios',
     'cordovacli:build_android',
+    'cordovacli:build_browser'
   ]);
 
   grunt.registerTask('server', ['connect:server']);
