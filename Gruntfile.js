@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     app: {
-      name: 'App'
+      name: 'RisingStarPathways-Cordova'
     },
     clean: {
       plugins: ['plugins'],
